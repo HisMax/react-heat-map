@@ -1,17 +1,19 @@
 import React, { CSSProperties, useEffect, useMemo, useState } from 'react';
 import { LabelsWeek } from './LabelsWeek';
 import { LabelsMonth } from './LabelsMonth';
-import { RectProps  } from './Rect';
+import { RectProps } from './Rect';
 import { isValidDate, oneDayTime } from './utils';
 import Legend, { LegendProps } from './Legend';
 import { Day } from './Day';
 
+// 定义 HeatMapValue 类型，用于描述热图数据
 export type HeatMapValue = {
   date: string;
   content?: string | string[] | React.ReactNode;
   count: number;
 };
 
+// 扩展 SVGProps 接口，添加 isVertical 属性来控制图例方向
 export interface SVGProps extends React.SVGProps<SVGSVGElement> {
   startDate?: Date;
   endDate?: Date;
@@ -34,6 +36,7 @@ export interface SVGProps extends React.SVGProps<SVGSVGElement> {
   /** position of month labels @default `top` */
   monthPlacement?: 'top' | 'bottom';
   panelColors?: Record<number, string>;
+  isVertical?: boolean; // 新增属性，控制图例是竖向还是横向渲染
 }
 
 export default function SVG(props: SVGProps) {
@@ -52,14 +55,17 @@ export default function SVG(props: SVGProps) {
     monthLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     panelColors = { 0: 'var(--rhm-rect, #EBEDF0)', 8: '#7BC96F', 4: '#C6E48B', 12: '#239A3B', 32: '#196127' },
     style,
+    isVertical,
     ...other
   } = props || {};
+  
   const [gridNum, setGridNum] = useState(0);
   const [leftPad, setLeftPad] = useState(!!weekLabels ? 28 : 5);
 
   const defaultTopPad = monthPlacement === 'top' ? 20 : 5;
   const [topPad, setTopPad] = useState(!!monthLabels ? defaultTopPad : 5);
   const svgRef = React.createRef<SVGSVGElement>();
+
   useEffect(() => setLeftPad(!!weekLabels ? 28 : 5), [weekLabels]);
   useEffect(() => {
     if (svgRef.current) {
@@ -88,10 +94,12 @@ export default function SVG(props: SVGProps) {
     fontSize: 10,
   } as CSSProperties;
 
-  const monthRectY = monthPlacement === 'top' ? 15 : 15 * 7 + space
+  const monthRectY = monthPlacement === 'top' ? 15 : 15 * 7 + space;
   const legendTopPad = monthPlacement === 'top' ? topPad + rectSize * 8 + 6 : (!!monthLabels ? (topPad + rectSize + space) : topPad) + rectSize * 8 + 6;
+
   return (
     <svg ref={svgRef} style={{ ...styl, ...style }} {...other}>
+      {/* 渲染图例，并传递 isVertical 属性 */}
       {legendCellSize !== 0 && (
         <Legend
           legendRender={legendRender}
@@ -102,6 +110,7 @@ export default function SVG(props: SVGProps) {
           leftPad={leftPad}
           topPad={topPad}
           space={space}
+          isVertical={isVertical} // 传递 isVertical 属性，控制图例的渲染方向
         />
       )}
       <LabelsWeek weekLabels={weekLabels} rectSize={rectSize} space={space} topPad={topPad} />

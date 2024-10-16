@@ -15,6 +15,7 @@ type DayProps = {
   rectRender?: SVGProps['rectRender'];
   panelColors?: SVGProps['panelColors'];
   value?: SVGProps['value'];
+  
 }
 
 export const Day:FC<PropsWithChildren<DayProps>> = (props) => {

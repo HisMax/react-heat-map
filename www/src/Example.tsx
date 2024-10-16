@@ -40,7 +40,7 @@ const Wrapper = styled.div`
 `;
 
 const data1: HeatMapValue[] = [
-  { date: '2016/01/11', count: 2, content: '' },
+  { date: '2016/01/11', count: 30, content: '' },
   ...[...Array(17)].map((_, idx) => ({ date: `2016/02/${idx + 10}`, count: idx, content: '' })),
   { date: '2016/03/02', count: 5, content: '' },
   { date: '2016/03/04', count: 11, content: '' },
@@ -107,6 +107,7 @@ export default function Example() {
   const [legendCellSize, setLegendCellSize] = useState<number | undefined>();
   const [enableWeekLabels, setEnableWeekLabels] = useState<false | undefined | string[]>(undefined);
   const [enableMonthLabels, setEnableMonthLabels] = useState<false | undefined | string[]>(undefined);
+  const [enableisVertical, setEnableisVertical] = useState(false);
   return (
     <Wrapper>
       <ExampleWrapper>
@@ -125,6 +126,7 @@ export default function Example() {
           endDate={enableEndDate ? new Date('2016/6/01') : undefined}
           monthPlacement={monthPlacement}
           value={value}
+          isVertical={enableisVertical}
           rectProps={{
             rx: !enableCircle ? 0 : 5,
             onClick: (e) => {
@@ -140,6 +142,7 @@ export default function Example() {
               </Tooltip>
             );
           }}
+          
           // rectRender={({
           //   rectSize,
           //   column,
@@ -184,6 +187,12 @@ export default function Example() {
           <input type="checkbox" checked={enableCircle} onChange={(e) => setEnableCircle(e.target.checked)} />
           {enableCircle ? 'Circle' : 'Rect'}
         </label>
+
+        <label>
+          <input type="checkbox" checked={enableisVertical} onChange={(e) => setEnableisVertical(e.target.checked)} />
+          isVertical = {enableisVertical ? 'true' : 'false'}
+        </label>
+
 
         <label style={{ marginTop: 15 }}>
           <input

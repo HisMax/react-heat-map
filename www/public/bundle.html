@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <title>HeatMap for React.</title>
-    <meta name="keywords" content="react,component,react-heat-map,heat-map,graph,HeatMap" />
-    <meta name="description" content="React component create calendar heatmap to visualize time series data, a la github contribution graph." />
+    <title>React 日历热图</title>
+    <meta name="keywords" content="react,组件,react-heat-map,热图,图表,HeatMap" />
+    <meta name="description" content="React 组件用于创建日历热图，方便可视化时间序列数据，类似于 GitHub 的贡献图。" />
     <script src="https://unpkg.com/@babel/standalone@7.17.5/babel.min.js" crossorigin></script>
     <script src="https://unpkg.com/react@16.x/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16.x/umd/react-dom.development.js" crossorigin></script>
@@ -19,27 +19,27 @@
       import HeatMap from '@uiw/react-heat-map';
 
       const SetRectStyle = () => {
-        const [range, setRange] = React.useState(5)
+        const [range, setRange] = React.useState(5);
         return (
           <div>
             <input type="range" min="0" max="5" step="0.1" value={range} onChange={(e) => setRange(e.target.value)} /> {range}
             <HeatMap
               value={[
-                { date: '2016/01/11', count:2 },
+                { date: '2016/01/11', count: 2 },
                 ...[...Array(17)].map((_, idx) => ({ date: `2016/01/${idx + 10}`, count: idx })),
                 ...[...Array(17)].map((_, idx) => ({ date: `2016/02/${idx + 10}`, count: idx })),
-                { date: '2016/04/12', count:2 },
-                { date: '2016/05/01', count:5 },
-                { date: '2016/05/02', count:5 },
-                { date: '2016/05/03', count:1 },
-                { date: '2016/05/04', count:11 },
-                { date: '2016/05/08', count:32 },
+                { date: '2016/04/12', count: 2 },
+                { date: '2016/05/01', count: 5 },
+                { date: '2016/05/02', count: 5 },
+                { date: '2016/05/03', count: 1 },
+                { date: '2016/05/04', count: 11 },
+                { date: '2016/05/08', count: 32 },
               ]}
               width={600}
               startDate={new Date('2016/01/01')}
               legendRender={(props) => <rect {...props} y={props.y + 10} rx={range} />}
               rectProps={{
-                rx: range
+                rx: range,
               }}
             />
           </div>
