@@ -1,13 +1,11 @@
 {
-  "name": "react-heat-map",
+  "name": "@histonemax/react-heat-map",
   "version": "1.0.0",
   "description": "React component create calendar heatmap to visualize time series data, a la github contribution graph.",
-  "homepage": "https://uiwjs.github.io/react-heat-map/",
-  "funding": "https://jaywcjlove.github.io/#/sponsor",
   "main": "./lib/index.js",
   "module": "./esm/index.js",
   "types": "./lib/index.d.ts",
-  "author": "kenny wang <wowohoo@qq.com>",
+  "author": "Histonemax",
   "license": "MIT",
   "scripts": {
     "css:build": "compile-less -d src -o esm",
@@ -24,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/uiwjs/react-heat-map.git"
+    "url": "https://github.com/hismax/react-heat-map.git"
   },
   "files": [
     "dist.css",

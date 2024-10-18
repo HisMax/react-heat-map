@@ -4,7 +4,7 @@ import { LabelsMonth } from './LabelsMonth';
 import { RectProps } from './Rect';
 import { isValidDate, oneDayTime } from './utils';
 import Legend, { LegendProps } from './Legend';
-import { Day } from './Day';
+import { Day } from './Day'; // 引入Day组件，包括DayProps类型
 
 // 定义 HeatMapValue 类型，用于描述热图数据
 export type HeatMapValue = {
@@ -62,7 +62,7 @@ export default function SVG(props: SVGProps) {
   const [gridNum, setGridNum] = useState(0);
   const [leftPad, setLeftPad] = useState(!!weekLabels ? 28 : 5);
 
-  const defaultTopPad = monthPlacement === 'top' ? 20 : 5;
+  const defaultTopPad = isVertical ? 20 : monthPlacement === 'top' ? 20 : 5;
   const [topPad, setTopPad] = useState(!!monthLabels ? defaultTopPad : 5);
   const svgRef = React.createRef<SVGSVGElement>();
 
@@ -95,7 +95,11 @@ export default function SVG(props: SVGProps) {
   } as CSSProperties;
 
   const monthRectY = monthPlacement === 'top' ? 15 : 15 * 7 + space;
-  const legendTopPad = monthPlacement === 'top' ? topPad + rectSize * 8 + 6 : (!!monthLabels ? (topPad + rectSize + space) : topPad) + rectSize * 8 + 6;
+  const legendTopPad = isVertical
+    ? topPad + rectSize * 8 + 6
+    : monthPlacement === 'top'
+    ? topPad + rectSize * 8 + 6
+    : (!!monthLabels ? (topPad + rectSize + space) : topPad) + rectSize * 8 + 6;
 
   return (
     <svg ref={svgRef} style={{ ...styl, ...style }} {...other}>
@@ -113,7 +117,13 @@ export default function SVG(props: SVGProps) {
           isVertical={isVertical} // 传递 isVertical 属性，控制图例的渲染方向
         />
       )}
-      <LabelsWeek weekLabels={weekLabels} rectSize={rectSize} space={space} topPad={topPad} />
+      <LabelsWeek 
+        weekLabels={weekLabels}
+        rectSize={rectSize}
+        space={space} 
+        topPad={topPad} 
+        isVertical={isVertical} 
+      />
       <LabelsMonth
         monthLabels={monthLabels}
         rectSize={rectSize}
@@ -122,6 +132,8 @@ export default function SVG(props: SVGProps) {
         colNum={gridNum}
         rectY={monthRectY}
         startDate={initStartDate}
+        isVertical={isVertical} 
+        monthPlacement={monthPlacement}
       />
       <Day
         transform={`translate(${leftPad}, ${topPad})`}
@@ -134,6 +146,7 @@ export default function SVG(props: SVGProps) {
         panelColors={panelColors}
         value={value}
         space={space}
+        isVertical={isVertical} // 传递 isVertical 属性，控制 Day 组件的渲染方向
       />
     </svg>
   );

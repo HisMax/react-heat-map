@@ -10,6 +10,7 @@ const ExampleWrapper = styled.div`
   margin: 0 auto;
   margin-top: 70px;
   width: 663px;
+  height: 300px;
   svg {
     border-radius: 5px;
   }
@@ -118,6 +119,7 @@ export default function Example() {
           }}
           panelColors={enableDark ? darkColor : undefined}
           width={663}
+          height={300}
           rectSize={rectSize}
           legendCellSize={legendCellSize}
           weekLabels={enableWeekLabels}
@@ -217,9 +219,9 @@ export default function Example() {
             type="radio"
             name="weekLabels"
             checked={Array.isArray(enableWeekLabels)}
-            onChange={(e) => setEnableWeekLabels(['日', '一', '', '三', '', '五', '六'])}
+            onChange={(e) => setEnableWeekLabels(['日', '一', '二', '三', '四', '五', '六'])}
           />
-          weekLabels = {JSON.stringify(['日', '一', '', '三', '', '五', '六'])}
+          weekLabels = {JSON.stringify(['日', '一', '二', '三', '四', '五', '六'])}
         </label>
 
         <label style={{ marginTop: 15 }}>

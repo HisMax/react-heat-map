@@ -1,11 +1,8 @@
-以下是对“HeatMap 日历热图”的详细中文翻译和补充说明：
-
----
-
 # HeatMap 日历热图
 
-这是一个轻量级的日历热图 React 组件，基于 SVG 构建，可以自定义版本的 GitHub 贡献图。你可以在[示例网站](https://uiwjs.github.io/react-heat-map/)上试用该组件。
+这是一个轻量级的日历热图 React 组件，基于 SVG 构建，可以自定义版本的 GitHub 贡献图。你可以在[示例网站](https://uiwjs.github.io/react-heat-map/)上试用该组件。在原作者uiw的项目[uiwjs/react-heat-map](https://github.com/uiwjs/react-heat-map)进行了一些修改，增加了一些新的功能。
 
+This is a lightweight calendar heat map React component, built on SVG, that can customize the GitHub contribution graph. You can try this component on the [example website](https://uiwjs.github.io/react-heat-map/). I made some modifications to the original project [uiwjs/react-heat-map](https://github.com/uiwjs/react-heat-map)
 ---
 
 ## 属性（Props）
@@ -25,8 +22,38 @@
 | `panelColors` | 活跃颜色的背景色 | `Record<number, string>` | `{ 0: '#EBEDF0', 8: '#7BC96F', 4: '#C6E48B', 12: '#239A3B', 32: '#196127' }` | 
 | `rectRender` | 单个`day`方块的重新渲染 | `<E = SVGRectElement>(data: E & { key: number }, valueItem: HeatMapValue & { date: string, column: number, row: number, index: number }) => React.ReactElement` | - |
 | `legendRender` | 单个`legend`图例块的重新渲染 | `(props: React.SVGProps<SVGRectElement>) => React.ReactNode` | - |
-
+| `isVertical` | 是否垂直显示 | `boolean` | `false` |
 ---
+## 部署（Deploy）
+
+### 1. 安装
+
+```bash
+npm install @histonemax/react-heat-map
+```
+
+### 2. 基础使用
+
+```jsx
+import React from 'react';
+import HeatMap from '@histonemax/react-heat-map';
+
+const App = () => {
+  const value = [
+    { date: '2021-01-01', count: 1 },
+    { date: '2021-01-02', count: 2 },
+    { date: '2021-01-03', count: 3 },
+    { date: '2021-01-04', count: 4 },
+    { date: '2021-01-05', count: 5 },
+    { date: '2021-01-11', count: 11 },
+    { date: '2021-01-12', count: 12 },
+    { date: '2021-01-13', count: 13 },
+    { date: '2021-01-18', count: 18 },
+  ];
+    return (
+        <HeatMap value={value} />
+    );
+
 
 ## 开发（Development）
 
@@ -120,13 +147,10 @@ npm run doc
 
 ## 感谢（Thanks）
 
-本项目构建于 [uiwjs/react-heat-map](https://github.com/uiwjs/react-heat-map) 项目基础上，感谢原作者的贡献。
+本项目构建于 [uiwjs/react-heat-map](https://github.com/uiwjs/react-heat-map) 项目基础上，再次感谢原作者的贡献。
 
 ---
 
 ## 许可证（License）
 
-根据 MIT 许可证授权。
-
-这个部分包括如何安装依赖、如何运行项目、如何进行代码修改并预览效果，以及如何打包发布项目。
-
+项目基于 MIT 协议发布，允许任何组织和个人免费使用。
