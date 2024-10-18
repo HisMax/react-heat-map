@@ -1,7 +1,7 @@
 {
   "name": "@histonemax/react-heat-map",
-  "version": "1.0.0",
-  "description": "React component create calendar heatmap to visualize time series data, a la github contribution graph.",
+  "version": "1.0.1",
+  "description": "A React component that displays a heat map. 基于 React 的热力图组件。",
   "main": "./lib/index.js",
   "module": "./esm/index.js",
   "types": "./lib/index.d.ts",
@@ -35,8 +35,10 @@
     "react",
     "heat-map",
     "react-heat-map",
-    "uiw",
-    "uiwjs",
+    "heatmap",
+    "hismax",
+    "histonemax",
+    "热力图",
     "code"
   ],
   "peerDependencies": {

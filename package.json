@@ -1,14 +1,12 @@
 {
   "private": true,
   "scripts": {
-    "⬇️⬇️⬇️⬇️⬇️ package ⬇️⬇️⬇️⬇️⬇️": "▼▼▼▼▼ package ▼▼▼▼▼",
     "watch": "npm run-script watch --workspace @histonemax/react-heat-map",
     "build": "npm run-script build --workspace @histonemax/react-heat-map",
     "bundle": "npm run-script bundle --workspace @histonemax/react-heat-map",
     "bundle:min": "npm run-script bundle:min --workspace @histonemax/react-heat-map",
     "doc": "npm run-script build --workspace www",
     "start": "npm run-script start --workspace www",
-    "⬆️⬆️⬆️⬆️⬆️ package ⬆️⬆️⬆️⬆️⬆️": "▲▲▲▲▲ package ▲▲▲▲▲",
     "version": "lerna version --exact --force-publish --no-push --no-git-tag-version",
     "prepare": "npm run build",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",

@@ -99,6 +99,7 @@ export const Day: FC<PropsWithChildren<DayProps>> = (props) => {
                     data-index={dataProps.index} // 网格中的索引
                     data-row={dataProps.row} // 行索引
                     data-column={dataProps.column} // 列索引
+                    data-title={date} // 添加data-title属性
                   />
                 );
               })}

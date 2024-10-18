@@ -3,6 +3,8 @@
 这是一个轻量级的日历热图 React 组件，基于 SVG 构建，可以自定义版本的 GitHub 贡献图。你可以在[示例网站](https://uiwjs.github.io/react-heat-map/)上试用该组件。在原作者uiw的项目[uiwjs/react-heat-map](https://github.com/uiwjs/react-heat-map)进行了一些修改，增加了一些新的功能。
 
 This is a lightweight calendar heat map React component, built on SVG, that can customize the GitHub contribution graph. You can try this component on the [example website](https://uiwjs.github.io/react-heat-map/). I made some modifications to the original project [uiwjs/react-heat-map](https://github.com/uiwjs/react-heat-map)
+
+
 ---
 
 ## 属性（Props）
@@ -54,6 +56,9 @@ const App = () => {
         <HeatMap value={value} />
     );
 
+}
+export default App;
+```
 
 ## 开发（Development）
 
